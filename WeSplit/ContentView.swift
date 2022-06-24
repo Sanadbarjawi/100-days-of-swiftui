@@ -11,8 +11,14 @@ struct ContentView: View {
     
     @State private var amount: Double = 0.0
     @State private var numberOfPeople: Int = 2
-    @State private var tipPercentages: [Int] = [15,20,25]
+    @State private var selectedTipPercentage: Int
     
+    private var tipPercentages: [Int] = [10,15,20,25]
+
+    init() {
+        _selectedTipPercentage = .init(initialValue: tipPercentages.first!)
+    }
+
     var body: some View {
         NavigationView {
             Form {
@@ -25,9 +31,9 @@ struct ContentView: View {
                     }.pickerStyle(.automatic)
                 }
                 Section("How much tip do you want to leave?") {
-                    Picker("Tip Percentage", selection: $tipPercentages) {
-                        ForEach(tipPercentages, id: \.self) { tip in
-                            Text(tip, format: .percent)
+                    Picker("Tip Percentage", selection: $selectedTipPercentage) {
+                        ForEach(tipPercentages, id: \.self) {
+                            Text("\($0)")
                         }
                     }.pickerStyle(.segmented)
                 }

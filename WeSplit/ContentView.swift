@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var amount: Double = 0.0
-    @State private var numberOfPeople: Int = 2
+    @State private var amount: Double?
+    @State private var selectedNumberOfPeople: Int
     @State private var selectedTipPercentage: Int
     
+    private var numberOfPeopleRange = 1...100
     private var tipPercentages: [Int] = [10,15,20,25]
 
     init() {
+        _selectedNumberOfPeople = .init(initialValue: numberOfPeopleRange.lowerBound)
         _selectedTipPercentage = .init(initialValue: tipPercentages.first!)
     }
 
@@ -24,8 +26,8 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("amount", value: $amount, format: .currency(code: "USD"))
-                    Picker("Numbe of People", selection: $numberOfPeople) {
-                        ForEach(0..<10) { num in
+                    Picker("Numbe of People", selection: $selectedNumberOfPeople) {
+                        ForEach(numberOfPeopleRange, id: \.self) { num in
                             Text("\(num)")
                         }
                     }.pickerStyle(.automatic)

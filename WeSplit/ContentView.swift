@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var amount: Double
+    @State private var amount: Double?
     @State private var selectedNumberOfPeople: Int
     @State private var selectedTipPercentage: Int
+    @FocusState private var amountFieldIsFocused: Bool
     
     private var numberOfPeopleRange = 1...100
     private var tipPercentages: [Int] = [10,15,20,25]
@@ -19,7 +20,7 @@ struct ContentView: View {
     private var totalAmount: Double {
         let peopleCount = Double(selectedNumberOfPeople)
         let tipSelection = Double(selectedTipPercentage)
-        let tipValue = amount / 100 * tipSelection
+        let tipValue = (amount ?? 0.0) / 100 * tipSelection
         let total = tipValue / peopleCount
         return total
     }
@@ -27,7 +28,6 @@ struct ContentView: View {
     init() {
         _selectedNumberOfPeople = .init(initialValue: numberOfPeopleRange.lowerBound)
         _selectedTipPercentage = .init(initialValue: tipPercentages.first!)
-        _amount = .init(initialValue: 0.0)
     }
 
     var body: some View {
@@ -35,6 +35,16 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("amount", value: $amount, format: .currency(code: "USD"))
+                        .keyboardType(.decimalPad)
+                        .focused($amountFieldIsFocused)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    amountFieldIsFocused = false
+                                }
+                            }
+                        }
                     Picker("Numbe of People", selection: $selectedNumberOfPeople) {
                         ForEach(numberOfPeopleRange, id: \.self) { num in
                             Text("\(num)")

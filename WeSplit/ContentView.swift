@@ -32,12 +32,14 @@ struct ContentView: View {
                         }
                     }.pickerStyle(.automatic)
                 }
-                Section("How much tip do you want to leave?") {
+                Section {
                     Picker("Tip Percentage", selection: $selectedTipPercentage) {
                         ForEach(tipPercentages, id: \.self) {
                             Text("\($0)")
                         }
                     }.pickerStyle(.segmented)
+                } header: {
+                    Text("How much tip do you want to leave?")
                 }
             }.navigationTitle("We Split")
         }

@@ -45,7 +45,7 @@ struct ContentView: View {
                                 }
                             }
                         }
-                    Picker("Numbe of People", selection: $selectedNumberOfPeople) {
+                    Picker("Number of People", selection: $selectedNumberOfPeople) {
                         ForEach(numberOfPeopleRange, id: \.self) { num in
                             Text("\(num)")
                         }
@@ -62,6 +62,8 @@ struct ContentView: View {
                 }
                 Section {
                     Text(totalAmount, format: .currency(code: "USD"))
+                } header: {
+                    Text("Amount per person")
                 }
             }
             .navigationTitle("We Split")

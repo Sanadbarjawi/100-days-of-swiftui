@@ -52,7 +52,7 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 Spacer()
                 Spacer()
-                Text("Score: ???")
+                Text("Score: \(correctAnswers)")
                     .font(.title.bold())
                     .foregroundColor(.white)
                 Spacer()

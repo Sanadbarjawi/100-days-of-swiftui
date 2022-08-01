@@ -14,8 +14,14 @@ struct ContentView: View {
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland","Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
+    
     @State private var correctAnswers: Int = 0
     @State private var selectedAnswer: Int = 0
+    
+    //user gets asked only 8 questions
+    @State private var numberofQuestions: Int = 8
+    @State private var currentQuestionIndex: Int = 1
+    
     var body: some View {
         ZStack {
             RadialGradient(stops: [.init(color: Color(red: 0.1, green: 0.2, blue: 0.45),
@@ -56,6 +62,9 @@ struct ContentView: View {
                 Text("Score: \(correctAnswers)")
                     .font(.title.bold())
                     .foregroundColor(.white)
+                Text("Question: \(currentQuestionIndex)")
+                    .font(.title.bold())
+                    .foregroundColor(.white)
                 Spacer()
             }
             .padding()
@@ -77,11 +86,17 @@ struct ContentView: View {
             scoreTitle = "Wrong! That's the flag of \(countries[selectedAnswer])"
         }
         showingScore = true
+        
+        if currentQuestionIndex == numberofQuestions {//user reached 8 questions, reset game.
+            correctAnswers = 0
+            currentQuestionIndex = 0
+        }
     }
     
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        currentQuestionIndex+=1
     }
 }
 

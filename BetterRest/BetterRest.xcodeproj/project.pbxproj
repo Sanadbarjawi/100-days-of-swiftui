@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3082229C29746C2D00003278 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3082229B29746C2D00003278 /* Assets.xcassets */; };
 		30B65D372974589E002E9311 /* BetterRestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B65D362974589E002E9311 /* BetterRestApp.swift */; };
 		30B65D392974589E002E9311 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B65D382974589E002E9311 /* ContentView.swift */; };
 		30B65D3E297458A1002E9311 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30B65D3D297458A1002E9311 /* Preview Assets.xcassets */; };
-		30B65D4529745FDC002E9311 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30B65D4429745FDC002E9311 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3082229B29746C2D00003278 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30B65D332974589E002E9311 /* BetterRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B65D362974589E002E9311 /* BetterRestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterRestApp.swift; sourceTree = "<group>"; };
 		30B65D382974589E002E9311 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		30B65D3D297458A1002E9311 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		30B65D4429745FDC002E9311 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 				30B65D362974589E002E9311 /* BetterRestApp.swift */,
 				30B65D382974589E002E9311 /* ContentView.swift */,
 				30B65D3C297458A1002E9311 /* Preview Content */,
-				30B65D4429745FDC002E9311 /* Assets.xcassets */,
+				3082229B29746C2D00003278 /* Assets.xcassets */,
 			);
 			path = BetterRest;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30B65D4529745FDC002E9311 /* Assets.xcassets in Resources */,
+				3082229C29746C2D00003278 /* Assets.xcassets in Resources */,
 				30B65D3E297458A1002E9311 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

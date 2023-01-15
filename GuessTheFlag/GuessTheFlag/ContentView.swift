@@ -32,8 +32,7 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 Text("Guess the Flag")
-                    .font(.largeTitle.bold())
-                    .foregroundColor(.white)
+                    .titleStyle()
                 VStack(spacing: 15) {
                     VStack {
                         Text("Tap the flag of")
@@ -46,10 +45,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(using: index)
                         } label: {
-                            Image(countries[index])
-                                .renderingMode(.original)
-                                .clipShape(Capsule())
-                                .shadow(radius: 5)
+                            FlagImage(image: Image(countries[index]))
                         }
                     }
                 }
@@ -103,5 +99,28 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct FlagImage: View {
+    let image: Image
+    var body: some View {
+        image
+            .renderingMode(.original)
+            .clipShape(Capsule())
+            .shadow(radius: 5)
+    }
+}
+
+struct TitleStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.blue)
+            .font(.largeTitle.bold())
+    }
+}
+extension View {
+    func titleStyle() -> some View {
+        return modifier(TitleStyle())
     }
 }

@@ -26,27 +26,32 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                Text("When do you want to wake up?")
-                    .font(.headline)
-                
-                DatePicker("Please enter a time",
-                           selection: $wakeUp,
-                           displayedComponents: .hourAndMinute)
-                .labelsHidden()
-                
-                Text("Desired amount to sleep")
-                    .font(.headline)
-                
-                Stepper("\(sleepAmount.formatted()) hours",
-                        value: $sleepAmount, in: 4...12,
-                        step: 0.25)
-                
-                Text("Daily coffee intake")
-                    .font(.headline)
-                
-                Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups",
-                         value: $coffeeAmount, in: 1...12,
-                         step: 1)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("When do you want to wake up?")
+                        .font(.headline)
+                    
+                    DatePicker("Please enter a time",
+                               selection: $wakeUp,
+                               displayedComponents: .hourAndMinute)
+                    
+                    .labelsHidden()
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Desired amount to sleep")
+                        .font(.headline)
+                    
+                    Stepper("\(sleepAmount.formatted()) hours",
+                            value: $sleepAmount, in: 4...12,
+                            step: 0.25)
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Daily coffee intake")
+                        .font(.headline)
+                    
+                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups",
+                            value: $coffeeAmount, in: 1...12,
+                            step: 1)
+                }
             }
             .navigationTitle("App")
             .toolbar {

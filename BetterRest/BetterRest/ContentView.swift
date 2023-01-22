@@ -10,15 +10,22 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var sleepAmount: Double = 8.0
-    @State private var wakeUp: Date = Date.now
+    @State private var wakeUp: Date = defaultWakeTime
     @State private var coffeeAmount = 1
     @State private var isAlertPresented: Bool = false
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
+    
+    private static var defaultWakeTime: Date {
+        var components = DateComponents()
+        components.hour = 7
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? Date.now
+    }
+    
     var body: some View {
-        
         NavigationView {
-            VStack(alignment: .center) {
+            Form {
                 Text("When do you want to wake up?")
                     .font(.headline)
                 
@@ -41,7 +48,6 @@ struct ContentView: View {
                          value: $coffeeAmount, in: 1...12,
                          step: 1)
             }
-            .padding(.all)
             .navigationTitle("App")
             .toolbar {
                 Button("Calculate") {
